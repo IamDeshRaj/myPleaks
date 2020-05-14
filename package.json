@@ -13,7 +13,10 @@
     "serve:ssr": "node dist/myPleaks/server/main.js",
     "local:serverless": "npm run build:ssr && npm run lambda:local",
     "build:ssr": "ng build --prod && ng run myPleaks:server:production",
-    "prerender": "ng run myPleaks:prerender"
+    "prerender": "ng run myPleaks:prerender",
+    "build:serverless:deploy": "npm run build:ssr && npm run deploy",
+    "deploy": "serverless deploy --aws-profile leaks",
+    "terminate": "serverless remove --aws-profile leaks"
   },
   "private": true,
   "dependencies": {
