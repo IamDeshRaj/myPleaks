@@ -11,10 +11,11 @@
     "dev:ssr": "ng run myPleaks:serve-ssr",
     "lambda:local": "serverless offline start",
     "serve:ssr": "node dist/myPleaks/server/main.js",
-    "local:serverless": "npm run build:ssr && npm run lambda:local",
-    "build:ssr": "ng build --prod && ng run myPleaks:server:production",
+    "local:serverless": "npm run webpack:package && npm run lambda:local",
+    "webpack:package": "npm run build:ssr && webpack --config webpack.server.config.js --progress --colors",
+    "build:ssr": "ng build --aot --prod && ng run myPleaks:server:production",
     "prerender": "ng run myPleaks:prerender",
-    "build:serverless:deploy": "npm run build:ssr && npm run deploy",
+    "build:serverless:deploy": "npm run webpack:package && npm run deploy",
     "deploy": "serverless deploy --aws-profile leaks",
     "terminate": "serverless remove --aws-profile leaks"
   },
@@ -32,9 +33,11 @@
     "@angular/service-worker": "~9.1.6",
     "@nguniversal/express-engine": "^9.1.1",
     "aws-serverless-express": "^3.3.8",
+    "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.15.2",
     "rxjs": "~6.5.4",
+    "ts-loader": "^7.0.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
@@ -56,11 +59,12 @@
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
-    "serverless": "^1.70.1",
+    "serverless": "^1.71.1",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-offline": "^6.1.5",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "webpack-cli": "^3.3.11"
   }
 }
