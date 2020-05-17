@@ -2,6 +2,7 @@ import 'zone.js/dist/zone-node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
+import * as compression from 'compression';
 import { join } from 'path';
 
 import { AppServerModule } from './src/main.server';
@@ -11,6 +12,7 @@ import { existsSync } from 'fs';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
+  server.use(compression());
   const distFolder = join(process.cwd(), 'dist/myPleaks/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 

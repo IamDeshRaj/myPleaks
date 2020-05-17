@@ -3,6 +3,9 @@ Latest Angular 9.1.6 app with SSR, PWA and Serverless(AWS Lambda), Ready to use.
 
 This application can directly be used to start a new Angular 9.1 project where Server Side Rendering(SSR), Progressive Web App(PWA) and Serverless(AWS Lambda Only) deployement is required. This application is completely bug free and Ready to use with minimum check Angular version and AWS profile checks. And obviously by renaming the application name as per your need.
 
+You can refer below youtube video : 
+https://www.youtube.com/watch?v=RKhyDUaWB9Q
+
 Here are the Steps:
 
 1. @angular/cli version should be 9.1.5.
